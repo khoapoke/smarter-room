@@ -1,0 +1,122 @@
+{
+  "version": 1,
+  "author": "Environment Monitoring System",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "board-esp32-devkit-c-v4",
+      "id": "esp",
+      "top": 10,
+      "left": -100,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-dht22",
+      "id": "dht1",
+      "top": -130,
+      "left": 120,
+      "attrs": {
+        "temperature": "24",
+        "humidity": "40"
+      }
+    },
+    {
+      "type": "wokwi-photoresistor-sensor",
+      "id": "ldr1",
+      "top": 30,
+      "left": 170,
+      "attrs": {
+        "lux": "500"
+      }
+    },
+    {
+      "type": "wokwi-pir-motion-sensor",
+      "id": "pir1",
+      "top": 180,
+      "left": 160,
+      "attrs": {
+        "delayTime": "5"
+      }
+    },
+    {
+      "type": "wokwi-gas-sensor",
+      "id": "mq2",
+      "top": -110,
+      "left": 360,
+      "attrs": {
+        "ppm": "400",
+        "threshold": "4.4"
+      }
+    },
+    {
+      "type": "board-ssd1306",
+      "id": "oled1",
+      "top": 160,
+      "left": -280,
+      "attrs": {
+        "i2cAddress": "0x3c"
+      }
+    },
+    {
+      "type": "wokwi-relay-module",
+      "id": "relayFan",
+      "top": -120,
+      "left": -350,
+      "attrs": {
+        "transistor": "pnp"
+      }
+    },
+    {
+      "type": "wokwi-relay-module",
+      "id": "relayLight",
+      "top": 60,
+      "left": -350,
+      "attrs": {
+        "transistor": "pnp"
+      }
+    },
+    {
+      "type": "wokwi-buzzer",
+      "id": "buzzer1",
+      "top": 210,
+      "left": 410,
+      "attrs": {
+        "volume": "0.7"
+      }
+    }
+  ],
+  "connections": [
+    ["esp:3V3", "dht1:VCC", "red", []],
+    ["esp:GND.1", "dht1:GND", "black", []],
+    ["esp:15", "dht1:SDA", "green", []],
+
+    ["esp:3V3", "ldr1:VCC", "red", []],
+    ["esp:GND.2", "ldr1:GND", "black", []],
+    ["esp:34", "ldr1:DO", "green", []],
+
+    ["esp:5V", "pir1:VCC", "red", []],
+    ["esp:GND.3", "pir1:GND", "black", []],
+    ["esp:27", "pir1:OUT", "green", []],
+
+    ["esp:5V", "mq2:VCC", "red", []],
+    ["esp:GND.4", "mq2:GND", "black", []],
+    ["esp:33", "mq2:DO", "green", []],
+
+    ["esp:3V3", "oled1:VCC", "red", []],
+    ["esp:GND.5", "oled1:GND", "black", []],
+    ["esp:22", "oled1:SCL", "blue", []],
+    ["esp:21", "oled1:SDA", "blue", []],
+
+    ["esp:5V", "relayFan:VCC", "red", []],
+    ["esp:GND.6", "relayFan:GND", "black", []],
+    ["esp:26", "relayFan:IN", "green", []],
+
+    ["esp:5V", "relayLight:VCC", "red", []],
+    ["esp:GND.7", "relayLight:GND", "black", []],
+    ["esp:25", "relayLight:IN", "green", []],
+
+    ["esp:GND.8", "buzzer1:1", "black", []],
+    ["esp:14", "buzzer1:2", "green", []]
+  ],
+  "dependencies": {}
+}

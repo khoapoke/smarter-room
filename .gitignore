@@ -1,0 +1,17 @@
+# PlatformIO build output and downloaded libraries
+.pio/
+
+# Machine-specific VS Code/PlatformIO files
+.vscode/*
+!.vscode/extensions.json
+
+# Operating-system and editor temporary files
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# Local secrets and environment files
+.env
+.env.*
+!.env.example
